@@ -27,3 +27,13 @@ class ProductPage(BasePage):
     def check_right_name_and_price(self):
         name = self.browser.find_element(*ProductPageLocators.NAME_OF_A_BOOK).text
         assert name == "Coders at Work", "Thats it"
+
+    def should_not_be_success_message(self):
+        assert \
+            self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
+            "Success message is presented, but should not be"
+
+    def should_success_message_disappeared(self):
+        assert \
+            self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is disappeared"
